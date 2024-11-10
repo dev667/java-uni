@@ -21,7 +21,7 @@ public class GGT {
                 }
 
                 r = m - n; // zieht größere Zahl von der kleineren ab
-                m = n; // m wird 4
+                m = n; // m wird n
                 n = r; // n wird irgendwann 0 wenn es einen ggT gibt
 
             }

@@ -23,8 +23,7 @@
   
 */
 
-public class KochSchneeflocke 
-{
+public class KochSchneeflocke {
 
     public static void main(String[] args) 
     {
@@ -84,45 +83,31 @@ public class KochSchneeflocke
     {
     	// TODO: Implementieren Sie das Zeichnen der Koch-Kurve
 
+
+        // Rekursionsanker
+        if (tiefe == 0) {
+            StdDraw.line(x1, y1, x5, y5);
+            return;
+        }
+
         // Calculation of coordinates
         double x2 = x1 + 1.0 / 3.0 * (x5 - x1);
         double y2 = y1 + 1.0 / 3.0 * (y5 - y1);
 
-        double x3 = 1.0 / 2.0 * (x1 + x5) + (Math.sqrt(3) / 6) * (y1 - y5);
-        double y3 = 1.0 / 2.0 * (y1 + y5) + (Math.sqrt(3) / 6) * (x5 - x1);
+        double x3 = 1.0 / 2.0 * (x1 + x5) + (Math.sqrt(3) / 6.0) * (y1 - y5);
+        double y3 = 1.0 / 2.0 * (y1 + y5) + (Math.sqrt(3) / 6.0) * (x5 - x1);
 
         double x4 = x1 + 2.0 / 3.0 * (x5 - x1);
         double y4 = y1 + 2.0 / 3.0 * (y5 - y1);
 
 
-        if (tiefe > 0) {
-            StdDraw.line(x1, y1, x2, y2);
-            StdDraw.line(x2, y2, x3, y3);
-            StdDraw.line(x3, y3, x4, y4);
-            StdDraw.line(x4, y4, x5, y5);
-        }
-        else if (tiefe == 0)
-            StdDraw.line(x1, y1, x5, y5);
-        else if (tiefe == - 1)
-            return;
-        else
-            System.exit(2);
+        // Rekursive Aufrufe für die vier Teilabschnitte
+        zeichneKochKurve(tiefe - 1, x1, y1, x2, y2);
+        zeichneKochKurve(tiefe - 1, x2, y2, x3, y3);
+        zeichneKochKurve(tiefe - 1, x3, y3, x4, y4);
+        zeichneKochKurve(tiefe - 1, x4, y4, x5, y5);
 
 
 
-        switch (tiefe) {
-            case 4:
-                zeichneKochKurve(tiefe - 1, x1, y1, x5, y5);
-                break;
-            case 3:
-                zeichneKochKurve(tiefe - 1, x1, y1, x5, y5);
-                break;
-            case 2:
-                zeichneKochKurve(tiefe - 1, x1, y1, x5, y5);
-                break;
-            case 1:
-                zeichneKochKurve(tiefe - 2, x1, y1, x5, y5);
-                break;
-        }
     }
 }

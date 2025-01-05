@@ -17,69 +17,54 @@ public class PlaetzchenPruefer {
             return;
         }
 
+	    // Call recursive method pruefePlaetzchen and hand over the number of Plaetzchen to try
+        int result = pruefePlaetzchen(toTry);
+        System.out.println(result);
 
-        // Call the method and hand over the amount of Plaetzchen to try
-
-        // Simple cases
-        if ( toTry == 0 ) {
-            // Case 1: Returns zero Plaetzchen tried because there are none
-            System.out.println(toTry);
-        }
-
-        else if ( toTry == 1 ) {
-            // Case 2: Returns one Plaetzchen tried to the main method
-            System.out.println(toTry);
-        }
-        else
-            // Call recursive method pruefePlaetzchen and hand over the number of Plaetzchen to try
-            pruefePlaetzchen(toTry);
     }
 
 
     public static int pruefePlaetzchen(int anzahlPlaetzchen) {
 
-
         // Strategy
+        if ( anzahlPlaetzchen == 0) {
+            // Case 1: Returns zero Plaetzchen tried because there are none 
+            // or returns the all tried Plaetzchen adding zero
+            return triedPlaetzchen;
+        }
+
+
+        if ( anzahlPlaetzchen == 1) {
+            // Case 2: Returns one Plaetzchen tried
+            // or returns all Plaetzchen tried adding 1
+            return triedPlaetzchen += 1;
+        }
+
         if (anzahlPlaetzchen % 2 == 0) {
             // Case 3: If number of Plaetzchen is even
-            int x = anzahlPlaetzchen - 2;
-            int y = x / 2;
-            anzahlPlaetzchen = y;
 
-            // Increase number if tried Plaetzchen by 2
-            if (triedPlaetzchen != 0)
-                triedPlaetzchen += 2;
-            else
-                triedPlaetzchen = 2;
+
+            // Increase number of tried Plaetzchen by 2
+            triedPlaetzchen += 2;
+
+            // Recursive call and divide the stack by two
+            pruefePlaetzchen( (anzahlPlaetzchen - 2) / 2 );
+
 
         } else {
             // Case 4: If number of Plaetzchen is odd
-            int z = anzahlPlaetzchen - 1;
-            anzahlPlaetzchen = z;
+            
 
             // Increase number of tried Plaetzchen by 1
-            if (triedPlaetzchen != 0)
-                triedPlaetzchen += 1;
-            else
-                triedPlaetzchen = 1;
+            triedPlaetzchen += 1;
 
+            //Recursive call and remove one tried Plaetzchen
+            pruefePlaetzchen(anzahlPlaetzchen - 1);
         }
 
-
-        if ( anzahlPlaetzchen != 0) {
-            // Recursive call until no more Plaetzchen are left
-            pruefePlaetzchen(anzahlPlaetzchen);
-        }
-
+        
         // Returns the amount of tried Plaetzchen
-        if ( anzahlPlaetzchen == 0 ) {
-            anzahlPlaetzchen = triedPlaetzchen;
-            System.out.println(triedPlaetzchen);
-        }
-
-        return anzahlPlaetzchen;
+        return triedPlaetzchen;
+	
     }
-
-
-
 }

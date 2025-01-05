@@ -6,20 +6,21 @@ public class PlaetzchenPruefer {
 
     public static void main(String[] args) {
 
-        // Declare how many Plaetzchen will be tested
-        String userInput = args[0];
-
-        // Convert the user input from String to int
+        // Convert the user argument from String to int
         try {
-            toTry = Integer.parseInt(userInput);
-        } catch (NumberFormatException ex) {
-            System.out.println("Invalid input. Please enter a valid number.");
-            return;
-        }
+            toTry = Integer.parseInt(args[0]);
+            if (toTry < 0)
+                throw new IllegalArgumentException();
 
-	    // Call recursive method pruefePlaetzchen and hand over the number of Plaetzchen to try
-        int result = pruefePlaetzchen(toTry);
-        System.out.println(result);
+	        // Call recursive method pruefePlaetzchen and hand over the number of Plaetzchen to try
+            int result = pruefePlaetzchen(toTry);
+            System.out.println(result);
+
+
+        } catch (IllegalArgumentException ex) {
+            System.out.println("Invalid input. Please enter a valid number.");
+            System.exit(2);
+        }
 
     }
 

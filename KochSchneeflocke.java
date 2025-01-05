@@ -25,8 +25,7 @@
 
 public class KochSchneeflocke {
 
-    public static void main(String[] args) 
-    {
+    public static void main(String[] args) {
         // Parameter ist die gewuenschte Tiefe
         int depth = Integer.parseInt(args[0]);
          
@@ -79,10 +78,8 @@ public class KochSchneeflocke {
     * @param x5    - x-Koordinate des Endes des aktuellen Linienabschnitts
     * @param y5    - y-Koordinate des Endes des aktuellen Linienabschnitts
     */
-    public static void zeichneKochKurve(int tiefe, double x1, double y1, double x5, double y5) 
-    {
-    	// TODO: Implementieren Sie das Zeichnen der Koch-Kurve
 
+    public static void zeichneKochKurve(int tiefe, double x1, double y1, double x5, double y5) {
 
         // Rekursionsanker
         if (tiefe == 0) {
@@ -106,8 +103,6 @@ public class KochSchneeflocke {
         zeichneKochKurve(tiefe - 1, x2, y2, x3, y3);
         zeichneKochKurve(tiefe - 1, x3, y3, x4, y4);
         zeichneKochKurve(tiefe - 1, x4, y4, x5, y5);
-
-
 
     }
 }

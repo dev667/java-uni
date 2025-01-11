@@ -45,7 +45,6 @@ public class Roman {
         try {
             // Try to parse the first argument as an int
             int N = Integer.parseInt(args[0]);
-            String input = args[0];
 
             if ( 1 <= N && N <= 5000 ) { // && !input.matches("^0+$") ) {
                 // System.out.println(N); // Print if value is assigned right
